@@ -1,0 +1,158 @@
+/* Variáveis Globais */
+:root {
+    --cor-primaria: #FFFFFF;
+    --cor-secundaria: #38637E;
+    --cor-terciaria: #223D4D;
+    --fonte-principal: "Inter";
+    --input-width: 13.968em;
+    --input-height: 2.063em;
+    --input-radius: 30em;
+}
+
+/* Estilos Globais */
+body {
+    font-family: var(--fonte-principal);
+}
+
+/* Inputs */
+input:not([type="submit"]):not([type="checkbox"]) {
+    background-color: var(--cor-primaria);
+    border-radius: var(--input-radius);
+    border: none;
+    outline: none;
+    height: var(--input-height);
+    width: var(--input-width);
+    padding-inline: 1em;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+input[type="submit"] {
+    height: var(--input-height);
+    width: var(--input-width);
+    border-radius: var(--input-radius);
+    border: none;
+    outline: none;
+
+    background-color: var(--cor-terciaria);
+    color: var(--cor-primaria);
+
+    font-family: var(--fonte-principal);
+}
+
+input[type="submit"]:hover {
+    background-color: #1a2b36;
+    /* um tom mais escuro */
+    transform: scale(1.03);
+    /* leve aumento */
+}
+
+/* Componentes */
+.geometric {
+    height: 16.17em;
+    width: 16.17em;
+
+    background-color: var(--cor-secundaria);
+
+    border-radius: 1.88em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Título principal */
+
+h1 {
+    color: var(--cor-primaria);
+    font-size: 1.62em;
+}
+
+a {
+    text-decoration: none;
+    /* Remove o sublinhado */
+    color: var(--cor-primaria);
+}
+
+a[name="cadastro"] {
+    font-size: 0.562em;
+}
+
+.container_options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 24em;
+    font-size: 0.562em;
+    color: var(--cor-primaria);
+
+    margin-bottom: 0.5em;
+}
+
+.container_options a {
+    color: var(--cor-primaria);
+    font-size: inherit;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+input[type="email"],
+[type="password"] {
+    margin-bottom: 0.5em;
+    /* Espaçamento entre os inputs */
+}
+
+/* Container dos inputs com ícone */
+.input-icon, .input_icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: var(--input-width);
+    margin-bottom: 0.5em;
+}
+
+.forms {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Centraliza verticalmente */
+}
+
+/* Aumenta proporcionalmente em telas maiores */
+@media (min-width: 768px) {
+    :root {
+        --input-width: 23.813em;
+        --input-height: 3.5em;
+    }
+
+    .geometric {
+        width: 31.25em;
+        height: 31.25em;
+        border-radius: 2.5em;
+        padding: 2em;
+
+    }
+    .container_options {
+        width: 27em;
+        font-size: 0.8em;
+        margin-bottom: 1.063em;
+        margin-top: 1.063em;
+    }
+    h1 {
+        font-size: 3.125em;
+    }
+
+    a[name="cadastro"] {
+        font-size: 0.875em;
+    }
+
+    input[type="submit"] {
+        font-weight: 800;
+        margin-bottom: 1.063em;
+    }
+}
