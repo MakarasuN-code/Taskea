@@ -1,6 +1,6 @@
 /* Variáveis Globais */
 :root {
-    --cor-primaria: #FFFFFF;
+    --cor-primaria: #FFF;
     --cor-secundaria: #38637E;
     --cor-terciaria: #223D4D;
     --fonte-principal: "Inter";
@@ -10,13 +10,23 @@
 }
 
 /* Estilos Globais */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--fonte-principal);
 }
 
 /* Inputs */
-input:not([type="submit"]):not([type="checkbox"]) {
-    background-color: var(--cor-primaria);
+input:not([type="submit"]):not([type="checkbox"]),
+input[type="email"],
+input[type="password"] {
+    background: var(--cor-primaria);
     border-radius: var(--input-radius);
     border: none;
     outline: none;
@@ -26,6 +36,7 @@ input:not([type="submit"]):not([type="checkbox"]) {
     font-family: inherit;
     transition: all 0.3s ease;
     cursor: pointer;
+    margin-bottom: 0.5em;
 }
 
 input[type="submit"] {
@@ -34,45 +45,51 @@ input[type="submit"] {
     border-radius: var(--input-radius);
     border: none;
     outline: none;
-
-    background-color: var(--cor-terciaria);
+    background: var(--cor-terciaria);
     color: var(--cor-primaria);
-
     font-family: var(--fonte-principal);
 }
 
 input[type="submit"]:hover {
-    background-color: #1a2b36;
-    /* um tom mais escuro */
+    background: #1a2b36;
     transform: scale(1.03);
-    /* leve aumento */
 }
 
 /* Componentes */
 .geometric {
     height: 16.17em;
     width: 16.17em;
-
-    background-color: var(--cor-secundaria);
-
+    background: var(--cor-secundaria);
     border-radius: 1.88em;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 /* Título principal */
-
 h1 {
     color: var(--cor-primaria);
     font-size: 1.62em;
+    font-weight: 900;
 }
 
-a {
+.login_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        color: var(--cor-primaria);
+    }
+    
+    span[class="material-symbols-outlined"] {
+        font-size: 1.62em;
+    }
+
+a,
+.container_options a {
     text-decoration: none;
-    /* Remove o sublinhado */
     color: var(--cor-primaria);
 }
 
@@ -87,13 +104,7 @@ a[name="cadastro"] {
     width: 24em;
     font-size: 0.562em;
     color: var(--cor-primaria);
-
     margin-bottom: 0.5em;
-}
-
-.container_options a {
-    color: var(--cor-primaria);
-    font-size: inherit;
 }
 
 .left {
@@ -101,14 +112,9 @@ a[name="cadastro"] {
     align-items: center;
 }
 
-input[type="email"],
-[type="password"] {
-    margin-bottom: 0.5em;
-    /* Espaçamento entre os inputs */
-}
-
 /* Container dos inputs com ícone */
-.input-icon, .input_icon {
+.input-icon,
+.input_icon {
     position: relative;
     display: flex;
     align-items: center;
@@ -120,10 +126,12 @@ input[type="email"],
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* Centraliza verticalmente */
+    min-height: 100vh;
 }
 
-/* Aumenta proporcionalmente em telas maiores */
+/* Responsividade (Desktop) - Até eu não compreendi o comportamento desse CSS*/
+
+
 @media (min-width: 768px) {
     :root {
         --input-width: 23.813em;
@@ -131,19 +139,20 @@ input[type="email"],
     }
 
     .geometric {
-        width: 31.25em;
-        height: 31.25em;
+        width: 25em;
+        height: 25em;
         border-radius: 2.5em;
         padding: 2em;
-
     }
+
     .container_options {
         width: 27em;
         font-size: 0.8em;
-        margin-bottom: 1.063em;
-        margin-top: 1.063em;
+        margin: 1.063em 0;
     }
-    h1 {
+
+    h1{
+        
         font-size: 3.125em;
     }
 
@@ -155,4 +164,42 @@ input[type="email"],
         font-weight: 800;
         margin-bottom: 1.063em;
     }
+
+    /* Organização do ícone no título "Login" */
+
+    .login_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        color: var(--cor-primaria);
+    }
+    
+    span[id="login"] {
+        font-size: 3.125em;
+    }
+
+    main[class="forms"] {
+        display: flex;
+    }
+/*
+    p[id="Taskea"] {
+        font-size: 8em;
+        font-weight: 900;
+        letter-spacing: -8px;
+    }
+
+    span[id="check"] {
+        font-size: 1.875em;
+    }
+
+    img[id="background"] {
+        width: 91.102em;
+        height: 68.438em;
+    }
+
+    .container_background {
+        display: flex;
+    }
+        */
 }
