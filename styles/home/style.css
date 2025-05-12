@@ -1,0 +1,74 @@
+:root {
+    --cor-primaria: #FFF;
+    --cor-secundaria: #38637E;
+    --cor-terciaria: #223D4D;
+    --fonte-principal: "Inter";
+    --input-width: 13.968em;
+    --input-height: 2.063em;
+    --input-radius: 30em;
+}
+
+/* Evitar barra de rolagem na área de trabalho */
+
+html, body {
+    font-family: var(--fonte-principal);
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Cabeçalho */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.nova_tarefa {
+    height: 2.75em;
+    width: 9.5em;
+    border-radius: 3.688em;
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-primaria);
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    /* Ícone da conta */
+
+    .conta {
+        color: var(--cor-secundaria);
+
+        display: flex;
+        align-items: center;
+    }
+        #account {
+            font-size: 4.083em;
+        }
+
+        #triangle {
+            font-size: 2.228em;
+        }
+
+/* Opções para tarefas */
+
+.options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    color: var(--cor-terciaria);
+}
+    #menu, #filter, h1 {
+        font-size: 3em;
+    }
+
+
