@@ -51,6 +51,12 @@ html, body {
     justify-content: center;
 }
 
+#logo {
+        width: 10.688em; 
+        height: 2.75em;
+}
+
+
     /* Ícone da conta */
 
     .conta {
@@ -88,5 +94,61 @@ html, body {
     #menu, #filter, h1 {
         font-size: 3em;
     }
+
+@media only screen and (max-width: 768px) {
+    .container_header {
+    width: 95%;
+    height: 15%;
+
+    box-sizing: border-box;
+    margin: 0 auto;
+    /* border: 2px solid black; */ 
+}
+    
+    .options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    color: var(--cor-terciaria);
+}
+    #menu, #filter, h1 {
+        font-size: 3em;
+    }
+
+    #Suas_tarefas {
+        font-size: 2.308em;
+    }
+
+    .nova_tarefa {
+    height: 3em;
+    width: 7em;
+    border-radius: 3.688em;
+    background-color: var(--cor-secundaria);
+
+    color: var(--cor-primaria);
+    font-size: 0.75em;
+    font-weight: 800;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    
+    #logo {
+        width: 6.205em; 
+        height: 1.597em;
+    }
+
+    /* Conta */
+
+    #account {
+            font-size: 2.371em;
+    }
+
+    #triangle {
+            font-size: 1.293em;
+    }
+}
 
 

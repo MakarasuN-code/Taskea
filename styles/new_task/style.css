@@ -1,0 +1,86 @@
+/* Atributos gerais */
+
+:root {
+    --fonte-principal: "Inter";
+    --cor-primaira: #223D4D;
+    --cor-secundaria: #e3ebf0;
+}
+
+body {
+    font-family: var(--fonte-principal);
+}
+
+
+input {
+    all: unset;
+}
+/* Comportamento de "Nova Tarefa" e "Adicionar um parágrafo" */
+
+.write {
+    display: flex;
+    flex-direction: column;
+}
+
+#text {
+    color: var(--cor-primaira);
+    font-size: 2.312em;
+    font-weight: 900;
+}
+
+#desc {
+    width: 20.048em;                     /* Largura do balão */
+    height: 11.668em;                     /* Altura do balão */
+    background-color: #e3ebf0;        /* Cor de fundo do balão */
+    border-radius: 0 1.264em 1.264em 1.264em;              /* Borda arredondada = formato de balão */
+                   /* Espaço interno horizontal */
+    font: inherit;                    /* Herda a fonte do body */
+    color: #223D4D;                   /* Cor do texto */
+    box-sizing: border-box;          /* Inclui padding na largura total */
+}
+
+#desc::placeholder {
+    color: #7a8a99;  
+    display: flex;
+    text-align: center;
+} 
+
+/* "Salvar" e "Voltar" */
+
+a {
+    all: unset; 
+}
+
+.options {
+    display: flex;
+    gap: 0.5em;
+}
+
+.buttons {
+    width: 4.949em;
+    height: 2.023em;
+    border-radius: 1.987em;
+
+    display: flex;
+    align-items: center;      /* Centraliza verticalmente */
+    justify-content: center;  /* Centraliza horizontalmente */
+    text-align: center;       /* Garante que o texto fique centralizado */
+
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+
+    font-weight: 900;
+}
+
+#salvar {
+    background-color: var(--cor-primaira);
+    color: var(--cor-secundaria);
+}
+
+#voltar {
+    color: var(--cor-primaira);
+    background-color: var(--cor-secundaria);
+}
+
+
+
