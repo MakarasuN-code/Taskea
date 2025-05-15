@@ -126,8 +126,16 @@ a[name="cadastro"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     min-height: 100vh;
+    gap: 3em;
 }
+
+img {
+    width: 10%;       
+    height: auto;
+} 
+
 
 /* Responsividade (Desktop) - Até eu não compreendi o comportamento desse CSS*/
 
