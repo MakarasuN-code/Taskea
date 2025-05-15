@@ -2,25 +2,27 @@
     --cor-primaria: #FFF;
     --cor-secundaria: #38637E;
     --cor-terciaria: #223D4D;
+    --cor-quartenaria: #C9D7E0;
     --fonte-principal: "Inter";
     --input-width: 13.968em;
     --input-height: 2.063em;
     --input-radius: 30em;
 }
 
+a {
+    all: unset;
+}
+
 /* Evitar barra de rolagem na área de trabalho */
 
-html, body {
+html,
+body {
     font-family: var(--fonte-principal);
     height: 100%;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-}
-
-a {
-    all: unset; 
 }
 
 /* Cabeçalho */
@@ -31,7 +33,7 @@ a {
 
     box-sizing: border-box;
     margin: 0 auto;
-    /* border: 2px solid black; */ 
+    /* border: 2px solid black; */
 }
 
 .header {
@@ -53,29 +55,45 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: pointer;
 }
 
 #logo {
-        width: 10.688em; 
-        height: 2.75em;
+    width: 10.688em;
+    height: 2.75em;
 }
 
 
-    /* Ícone da conta */
+/* Ícone da conta */
 
-    .conta {
-        color: var(--cor-secundaria);
+.conta {
+    color: var(--cor-secundaria);
 
-        display: flex;
-        align-items: center;
-    }
-        #account {
-            font-size: 4.083em;
-        }
+    display: flex;
+    align-items: center;
+}
 
-        #triangle {
-            font-size: 2.228em;
-        }
+#account,
+#triangle {
+    cursor: pointer;
+}
+
+#account {
+    font-size: 4.083em;
+}
+
+#triangle {
+    font-size: 2.228em;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+
+}
+
+/* Classe que ativa a rotação */
+.rotate {
+    transform: rotate(180deg);
+}
 
 /* Opções para tarefas */
 
@@ -85,7 +103,7 @@ a {
 
     box-sizing: border-box;
     margin: 0 auto;
-   /*x border: 2px solid black; */
+    /*x border: 2px solid black; */
 }
 
 .options {
@@ -94,29 +112,84 @@ a {
     align-items: center;
     gap: 1em;
     color: var(--cor-terciaria);
+    margin-bottom: -2em;
 }
-    #menu, #filter, h1 {
-        font-size: 3em;
-    }
 
-@media only screen and (max-width: 768px) {
-    .container_header {
-    width: 95%;
-    height: 15%;
-
-    box-sizing: border-box;
-    margin: 0 auto;
-    /* border: 2px solid black; */ 
+#menu,
+#filter,
+h1 {
+    font-size: 3em;
 }
-    
-    .options {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1em;
+
+.task-card {
+    border: none;
+    border-radius: 1.249em 1.249em 1.249em 1.249em;
+    padding: 2em;
+    margin: 1em auto;
+    width: 90%;
+    max-width: 600px;
+    background-color: var(--cor-quartenaria);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(56, 99, 126, 0.25);
+}
+
+.task-card h3 {
+    margin: 0 0 0 0;
+    margin-bottom: 3%;
+    font-size: 1.3em;
+    font-weight: 900;
     color: var(--cor-terciaria);
 }
-    #menu, #filter, h1 {
+
+.task-card p {
+    margin: 0;
+    font-size: 1em;
+    color: var(--cor-terciaria);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .task-card {
+        padding: 1.2em 0.25em;
+        width: 98%;
+    }
+
+
+    .task-card h3,
+    .task-card p {
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .task-card h3 {
+        margin-bottom: 3%;
+    }
+
+
+    .container_header {
+        width: 95%;
+        height: 8%;
+
+        box-sizing: border-box;
+        margin: 0 auto;
+        /* border: 2px solid black; */
+    }
+
+    .options {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        color: var(--cor-terciaria);
+    }
+
+    #menu,
+    #filter,
+    h1 {
         font-size: 3em;
     }
 
@@ -125,34 +198,32 @@ a {
     }
 
     .nova_tarefa {
-    height: 3em;
-    width: 7em;
-    border-radius: 3.688em;
-    background-color: var(--cor-secundaria);
+        height: 3em;
+        width: 7em;
+        border-radius: 3.688em;
+        background-color: var(--cor-secundaria);
 
-    color: var(--cor-primaria);
-    font-size: 0.75em;
-    font-weight: 800;
+        color: var(--cor-primaria);
+        font-size: 0.75em;
+        font-weight: 800;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     #logo {
-        width: 6.205em; 
+        width: 6.205em;
         height: 1.597em;
     }
 
     /* Conta */
 
     #account {
-            font-size: 2.371em;
+        font-size: 2.371em;
     }
 
     #triangle {
-            font-size: 1.293em;
+        font-size: 1.293em;
     }
 }
-
-

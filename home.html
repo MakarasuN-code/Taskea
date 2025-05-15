@@ -7,31 +7,142 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
     <title>Home</title>
 </head>
 <body>
+    <style>
+        .conta {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+        }
+
+        #triangle {
+            font-size: 24px;
+            transition: transform 0.2s ease;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius: 1.135em 0 1.135em 1.135em;
+            margin-top: 4px;
+            width: 200px;
+            display: none;
+            z-index: 1000;
+            padding: 1em;
+        }
+
+        #username {
+            margin-bottom: 0.7em;
+        }
+
+        #sair {
+            width: 3.111em;
+            height: 1.271em;
+            border-radius: 1.249em;
+            background-color: #C1121F;
+            text-align: center;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .dropdown.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 10px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f1f1f1;
+        }
+
+        .conta.open #triangle {
+            transform: rotate(180deg);
+        }
+    </style>
+
     <div class="container_header">
         <div class="header">
             <div class="nova_tarefa">
-                <p id="task">Nova tarefa</p>
-            </div>     
+                <a href="/new_task.html">
+                    <p id="task">Nova tarefa</p>
+                </a>
+            </div>
             <img id="logo" src="./assets/Taskea_logo.png">
-            <div class="conta">
-                <span id="triangle" class="material-symbols-outlined">arrow_drop_down</span>
+            <div class="conta" id="conta">
+                <span id="triangle" class="material-symbols-outlined">arrow_drop_up</span>
                 <span id="account" class="material-symbols-outlined">account_circle</span>
+                <div class="dropdown" id="dropdown">
+                    <div id="username">Olá, <strong>nome do usuário</strong>.</div>
+                    <a href="/login.html">
+                        <div class="dropdown-item" id="sair">Sair</div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="container_options_tasks">
         <div class="options">
-            <span id="filter" class="material-symbols-outlined">filter_alt</span>
+            <span id="filter" class="material-symbols-outlined">check_box</span>
             <h1 id="Suas_tarefas">Suas tarefas</h1>
             <span id="menu" class="material-symbols-outlined">menu</span>
         </div>
+        <div id="lista-tarefas" style="padding: 1em;"></div>
     </div>
+
+    <script>
+        // Dropdown e animação da seta
+        const triangle = document.getElementById("triangle");
+        const account = document.getElementById("account");
+        const conta = document.getElementById('conta');
+        const dropdown = document.getElementById('dropdown');
+
+        conta.addEventListener('click', () => {
+            dropdown.classList.toggle('show');
+            conta.classList.toggle('open');
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!conta.contains(e.target)) {
+                dropdown.classList.remove('show');
+                conta.classList.remove('open');
+                triangle.classList.remove("rotate");
+            }
+        });
+
+        // Exibição das tarefas do localStorage
+        const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+        const container = document.getElementById("lista-tarefas");
+
+        tarefas.forEach((tarefa) => {
+            const card = document.createElement("div");
+            card.classList.add("task-card");
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = tarefa.titulo;
+
+            const descricao = document.createElement("p");
+            descricao.textContent = tarefa.descricao;
+
+            card.appendChild(titulo);
+            card.appendChild(descricao);
+            container.appendChild(card);
+        });
+    </script>
 </body>
 </html>

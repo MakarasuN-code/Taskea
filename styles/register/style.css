@@ -16,6 +16,7 @@ html, body {
 
 body {
     font-family: var(--fonte-principal);
+    background-color: var(--cor-quartenaria);
 }
 
 input, a {
@@ -104,5 +105,5 @@ input::placeholder {
     align-items: center;
     font-size: 1.833em;
 
-    gap: 0.5em;
+    gap: 0.2em;
 }

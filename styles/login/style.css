@@ -3,6 +3,7 @@
     --cor-primaria: #FFF;
     --cor-secundaria: #38637E;
     --cor-terciaria: #223D4D;
+    --cor-quartenaria: #e3ebf0;
     --fonte-principal: "Inter";
     --input-width: 13.968em;
     --input-height: 2.063em;
@@ -20,9 +21,12 @@ html, body {
 
 body {
     font-family: var(--fonte-principal);
+    background-color: var(--cor-quartenaria  );
 }
 
+
 /* Inputs */
+
 input:not([type="submit"]):not([type="checkbox"]),
 input[type="email"],
 input[type="password"] {
@@ -87,8 +91,7 @@ h1 {
         font-size: 1.62em;
     }
 
-a,
-.container_options a {
+a, .container_options a {
     text-decoration: none;
     color: var(--cor-primaria);
 }

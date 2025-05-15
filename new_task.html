@@ -22,5 +22,32 @@
                     <div id="salvar" class="buttons">Salvar</div>
             </div>
         </div>
+
+        <script>
+            document.getElementById("salvar").addEventListener("click", () => {
+                const titulo = document.getElementById("text").value.trim();
+                const descricao = document.getElementById("desc").value.trim();
+
+                if (titulo === "") {
+                    alert("Por favor, insira um título para a tarefa.");
+                    return;
+                }
+
+                // Criar objeto da tarefa
+                const novaTarefa = { titulo, descricao };
+
+                // Pegar tarefas existentes do localStorage
+                const tarefasSalvas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
+                // Adicionar nova tarefa
+                tarefasSalvas.push(novaTarefa);
+
+                // Salvar de volta no localStorage
+                localStorage.setItem("tarefas", JSON.stringify(tarefasSalvas));
+
+                // Redirecionar para home.html
+                window.location.href = "home.html";
+            });
+        </script>
 </body>
 </html>
