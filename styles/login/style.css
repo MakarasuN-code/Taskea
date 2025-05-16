@@ -30,7 +30,7 @@ body {
 input:not([type="submit"]):not([type="checkbox"]),
 input[type="email"],
 input[type="password"] {
-    background: var(--cor-primaria);
+    background-color: var(--cor-quartenaria);
     border-radius: var(--input-radius);
     border: none;
     outline: none;

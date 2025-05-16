@@ -79,7 +79,7 @@ input::placeholder {
 /* Nome de usuário, email e senha */
 
 #username, #email, #password, #cadastro_botao {
-    background-color: var(--cor-terciaria);
+    background-color: var(--cor-quartenaria);
     padding: 0.5em 1em;
     color: var(--cor-secundaria);
 }

@@ -126,7 +126,7 @@ h1 {
     border-radius: 1.249em 1.249em 1.249em 1.249em;
     padding: 2em;
     margin: 1em auto;
-    width: 90%;
+    width: 60%;
     max-width: 600px;
     background-color: var(--cor-quartenaria);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -151,13 +151,12 @@ h1 {
     color: var(--cor-terciaria);
 }
 
-
+/* Media query para telas com largura máxima de 768px */
 @media only screen and (max-width: 768px) {
     .task-card {
         padding: 1.2em 0.25em;
         width: 98%;
     }
-
 
     .task-card h3,
     .task-card p {
@@ -169,14 +168,11 @@ h1 {
         margin-bottom: 3%;
     }
 
-
     .container_header {
         width: 95%;
         height: 8%;
-
         box-sizing: border-box;
         margin: 0 auto;
-        /* border: 2px solid black; */
     }
 
     .options {
@@ -202,11 +198,9 @@ h1 {
         width: 7em;
         border-radius: 3.688em;
         background-color: var(--cor-secundaria);
-
         color: var(--cor-primaria);
         font-size: 0.75em;
         font-weight: 800;
-
         display: flex;
         align-items: center;
         justify-content: center;
@@ -218,7 +212,6 @@ h1 {
     }
 
     /* Conta */
-
     #account {
         font-size: 2.371em;
     }

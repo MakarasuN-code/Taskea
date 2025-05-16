@@ -1,148 +1,300 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/home/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
-    <title>Home</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/home/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <title>Home</title>
 </head>
 <body>
-    <style>
-        .conta {
-            display: inline-flex;
-            align-items: center;
-            position: relative;
-        }
+  <style>
+    /* Estilos básicos omitidos para foco no novo recurso */
+    .conta {
+      display: inline-flex;
+      align-items: center;
+      position: relative;
+    }
 
-        #triangle {
-            font-size: 24px;
-            transition: transform 0.2s ease;
-        }
+    #triangle {
+      font-size: 24px;
+      transition: transform 0.2s ease;
+    }
 
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            border-radius: 1.135em 0 1.135em 1.135em;
-            margin-top: 4px;
-            width: 200px;
-            display: none;
-            z-index: 1000;
-            padding: 1em;
-        }
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 1.135em 0 1.135em 1.135em;
+      margin-top: 4px;
+      width: 200px;
+      display: none;
+      z-index: 1000;
+      padding: 1em;
+    }
 
-        #username {
-            margin-bottom: 0.7em;
-        }
+    #sair {
+      width: 3.111em;
+      height: 1.271em;
+      border-radius: 1.249em;
+      background-color: #c1121f;
+      text-align: center;
+      color: #ffffff;
+      font-weight: 600;
+    }
 
-        #sair {
-            width: 3.111em;
-            height: 1.271em;
-            border-radius: 1.249em;
-            background-color: #C1121F;
-            text-align: center;
-            color: #ffffff;
-            font-weight: 600;
-        }
+    .dropdown.show {
+      display: block;
+    }
 
-        .dropdown.show {
-            display: block;
-        }
+    .dropdown-item:hover {
+      background-color: #e0c9c9;
+    }
 
-        .dropdown-item {
-            padding: 10px 15px;
+    .menu_options {
+      position: relative;
+      display: inline-block;
+    }
+
+    #menu {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      border-radius: 1.135em 0 1.135em 1.135em;
+      display: none;
+      padding: 1em;
+      width: 200px;
+      z-index: 1000;
+    }
+
+    .dropdown-menu:hover {
+        background-color: #e0c9c9;
+    }
+
+    .dropdown-menu.show {
+      display: block;
+    }
+
+    .task-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 1em;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1em;
+    }
+
+    .task-card input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    #acoes-excluir {
+      display: none;
+      margin: 1em 0;
+    }
+
+    #excluir-selecionadas {
+      background-color: #c1121f;
+      color: white;
+      border: none;
+      padding: 0.5em 1em;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      font: inherit;
+    }
+
+    #mensagem-vazia {
+      display: none;
+      color: gray;
+      text-align: center;
+      margin: 2em;
+      font-style: italic;
+    }
+  </style>
+
+  <div class="container_header">
+    <div class="header">
+      <div class="nova_tarefa">
+        <a href="/new_task.html">
+          <p id="task">Nova tarefa</p>
+        </a>
+      </div>
+      <img id="logo" src="./assets/Taskea_logo.png" />
+      <div class="conta" id="conta">
+        <span id="triangle" class="material-symbols-outlined">arrow_drop_up</span>
+        <span id="account" class="material-symbols-outlined">account_circle</span>
+        <div class="dropdown" id="dropdown">
+          <div id="username">Olá, <strong>nome do usuário</strong>.</div>
+          <a href="/login.html">
+            <div class="dropdown-item" id="sair">Sair</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container_options_tasks">
+    <div class="options">
+      <span id="filter" class="material-symbols-outlined">check_box</span>
+      <h1 id="Suas_tarefas">Suas tarefas</h1>
+      <div class="menu_options">
+        <span id="menu" class="material-symbols-outlined">menu</span>
+        <div class="dropdown-menu" id="menuDropdown">
+          <div id="excluir" class="dropdown-item">Excluir</div>
+        </div>
+      </div>
+      <!-- Botão "Excluir selecionadas" -->
+        <div id="acoes-excluir">
+            <button id="excluir-selecionadas">Excluir selecionadas</button>
+            <button id="cancelar-exclusao" style="background-color: #ccc;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 20px;
             cursor: pointer;
-            border-bottom: 1px solid #eee;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background-color: #f1f1f1;
-        }
-
-        .conta.open #triangle {
-            transform: rotate(180deg);
-        }
-    </style>
-
-    <div class="container_header">
-        <div class="header">
-            <div class="nova_tarefa">
-                <a href="/new_task.html">
-                    <p id="task">Nova tarefa</p>
-                </a>
-            </div>
-            <img id="logo" src="./assets/Taskea_logo.png">
-            <div class="conta" id="conta">
-                <span id="triangle" class="material-symbols-outlined">arrow_drop_up</span>
-                <span id="account" class="material-symbols-outlined">account_circle</span>
-                <div class="dropdown" id="dropdown">
-                    <div id="username">Olá, <strong>nome do usuário</strong>.</div>
-                    <a href="/login.html">
-                        <div class="dropdown-item" id="sair">Sair</div>
-                    </a>
-                </div>
-            </div>
+            font-weight: 600;
+            font: inherit;">Cancelar</button>
         </div>
     </div>
 
-    <div class="container_options_tasks">
-        <div class="options">
-            <span id="filter" class="material-symbols-outlined">check_box</span>
-            <h1 id="Suas_tarefas">Suas tarefas</h1>
-            <span id="menu" class="material-symbols-outlined">menu</span>
-        </div>
-        <div id="lista-tarefas" style="padding: 1em;"></div>
-    </div>
+    <!-- Mensagem se estiver vazio -->
+    <p id="mensagem-vazia">Não há tarefas no momento</p>
 
-    <script>
-        // Dropdown e animação da seta
-        const triangle = document.getElementById("triangle");
-        const account = document.getElementById("account");
-        const conta = document.getElementById('conta');
-        const dropdown = document.getElementById('dropdown');
+    <div id="lista-tarefas" style="padding: 1em;"></div>
+  </div>
 
-        conta.addEventListener('click', () => {
-            dropdown.classList.toggle('show');
-            conta.classList.toggle('open');
-        });
+  <script>
+    // Conta dropdown
+    const conta = document.getElementById("conta");
+    const triangle = document.getElementById("triangle");
+    const dropdown = document.getElementById("dropdown");
 
-        document.addEventListener("click", (e) => {
-            if (!conta.contains(e.target)) {
-                dropdown.classList.remove('show');
-                conta.classList.remove('open');
-                triangle.classList.remove("rotate");
-            }
-        });
+    conta.addEventListener("click", () => {
+      dropdown.classList.toggle("show");
+      conta.classList.toggle("open");
+    });
 
-        // Exibição das tarefas do localStorage
-        const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
-        const container = document.getElementById("lista-tarefas");
+    document.addEventListener("click", (e) => {
+      if (!conta.contains(e.target)) {
+        dropdown.classList.remove("show");
+        conta.classList.remove("open");
+      }
+    });
 
-        tarefas.forEach((tarefa) => {
-            const card = document.createElement("div");
-            card.classList.add("task-card");
+    // Menu dropdown
+    const menuIcon = document.getElementById("menu");
+    const menuDropdown = document.getElementById("menuDropdown");
+    menuIcon.addEventListener("click", (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle("show");
+    });
 
-            const titulo = document.createElement("h3");
-            titulo.textContent = tarefa.titulo;
+    document.addEventListener("click", (e) => {
+      if (!menuDropdown.contains(e.target) && !menuIcon.contains(e.target)) {
+        menuDropdown.classList.remove("show");
+      }
+    });
 
-            const descricao = document.createElement("p");
-            descricao.textContent = tarefa.descricao;
+    // Tarefas
+    let tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+    const container = document.getElementById("lista-tarefas");
+    const acoesExcluir = document.getElementById("acoes-excluir");
+    const btnExcluirSelecionadas = document.getElementById("excluir-selecionadas");
+    const btnExcluir = document.getElementById("excluir");
+    const mensagemVazia = document.getElementById("mensagem-vazia");
 
-            card.appendChild(titulo);
-            card.appendChild(descricao);
-            container.appendChild(card);
-        });
-    </script>
+    let modoExclusao = false;
+
+    function renderizarTarefas() {
+      container.innerHTML = "";
+
+      if (tarefas.length === 0) {
+        mensagemVazia.style.display = "block";
+        acoesExcluir.style.display = "none";
+        return;
+      }
+
+      mensagemVazia.style.display = "none";
+
+      tarefas.forEach((tarefa, index) => {
+        const card = document.createElement("div");
+        card.classList.add("task-card");
+
+        const info = document.createElement("div");
+        const titulo = document.createElement("h3");
+        const descricao = document.createElement("p");
+        titulo.textContent = tarefa.titulo;
+        descricao.textContent = tarefa.descricao;
+        info.appendChild(titulo);
+        info.appendChild(descricao);
+
+        card.appendChild(info);
+
+        if (modoExclusao) {
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.classList.add("checkbox-excluir");
+          checkbox.dataset.index = index;
+          card.appendChild(checkbox);
+        }
+
+        container.appendChild(card);
+      });
+    }
+
+    btnExcluir.addEventListener("click", () => {
+      if (tarefas.length === 0) {
+        mensagemVazia.style.display = "block";
+        acoesExcluir.style.display = "none";
+        return;
+      }
+
+      modoExclusao = !modoExclusao;
+      acoesExcluir.style.display = modoExclusao ? "block" : "none";
+      renderizarTarefas();
+    });
+
+    btnExcluirSelecionadas.addEventListener("click", () => {
+      const checkboxes = document.querySelectorAll(".checkbox-excluir:checked");
+      const indicesParaRemover = Array.from(checkboxes).map(cb => parseInt(cb.dataset.index));
+
+      tarefas = tarefas.filter((_, index) => !indicesParaRemover.includes(index));
+      localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+      if (tarefas.length === 0) {
+        modoExclusao = false;
+        acoesExcluir.style.display = "none";
+        mensagemVazia.style.display = "block";
+      }
+
+      renderizarTarefas();
+    });
+
+    // Cancelar exclusão
+    const btnCancelar = document.getElementById("cancelar-exclusao");
+    btnCancelar.addEventListener("click", () => {
+    modoExclusao = false;
+    acoesExcluir.style.display = "none";
+    renderizarTarefas();
+    });
+
+    // Inicializa tarefas na tela
+    renderizarTarefas();
+  </script>
 </body>
 </html>
