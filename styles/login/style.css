@@ -1,137 +1,39 @@
-/* Variáveis Globais */
+/* Atributos gerais */
+
 :root {
-    --cor-primaria: #FFF;
-    --cor-secundaria: #38637E;
-    --cor-terciaria: #223D4D;
-    --cor-quartenaria: #e3ebf0;
     --fonte-principal: "Inter";
-    --input-width: 13.968em;
-    --input-height: 2.063em;
-    --input-radius: 30em;
+    --cor-primairia: #38637E;
+    --cor-secundaria: #223D4D;
+    --cor-terciaria: #FFFFFF;
+    --cor-quartenaria: #e3ebf0;
 }
 
-/* Estilos Globais */
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 body {
     font-family: var(--fonte-principal);
-    background-color: var(--cor-quartenaria  );
-}
-
-
-/* Inputs */
-
-input:not([type="submit"]):not([type="checkbox"]),
-input[type="email"],
-input[type="password"] {
     background-color: var(--cor-quartenaria);
-    border-radius: var(--input-radius);
-    border: none;
-    outline: none;
-    height: var(--input-height);
-    width: var(--input-width);
-    padding-inline: 1em;
-    font-family: inherit;
-    transition: all 0.3s ease;
+}
+
+input, a {
+    all: unset;
+}
+
+input[type="checkbox"] {
+    all: revert;
+    accent-color: var(--cor-secundaria);
+    width: 1em;
+    height: 1em;
+    margin-right: 0.2em;
     cursor: pointer;
-    margin-bottom: 0.5em;
 }
 
-input[type="submit"] {
-    height: var(--input-height);
-    width: var(--input-width);
-    border-radius: var(--input-radius);
-    border: none;
-    outline: none;
-    background: var(--cor-terciaria);
-    color: var(--cor-primaria);
-    font-family: var(--fonte-principal);
-}
-
-input[type="submit"]:hover {
-    background: #1a2b36;
-    transform: scale(1.03);
-}
-
-/* Componentes */
-.geometric {
-    height: 16.17em;
-    width: 16.17em;
-    background: var(--cor-secundaria);
-    border-radius: 1.88em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-
-/* Título principal */
-h1 {
-    color: var(--cor-primaria);
-    font-size: 1.62em;
-    font-weight: 900;
-}
-
-.login_icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    
-        color: var(--cor-primaria);
-    }
-    
-    span[class="material-symbols-outlined"] {
-        font-size: 1.62em;
-    }
-
-a, .container_options a {
-    text-decoration: none;
-    color: var(--cor-primaria);
-}
-
-a[name="cadastro"] {
-    font-size: 0.562em;
-}
-
-.container_options {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 24em;
-    font-size: 0.562em;
-    color: var(--cor-primaria);
-    margin-bottom: 0.5em;
-}
-
-.left {
-    display: flex;
-    align-items: center;
-}
-
-/* Container dos inputs com ícone */
-.input-icon,
-.input_icon {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: var(--input-width);
-    margin-bottom: 0.5em;
-}
-
-.forms {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 100vh;
-    gap: 3em;
+#already_account, #cadastrar {
+    cursor: pointer;
 }
 
 img {
@@ -139,79 +41,194 @@ img {
     height: auto;
 } 
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 3em;
+}
 
-/* Responsividade (Desktop) - Até eu não compreendi o comportamento desse CSS*/
+.geometric-box {
+    background-color: var(--cor-primairia);
+    padding: 4em;
+    border-radius: 2.886em;
+    max-width: 25em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
 
+    color: var(--cor-terciaria);
+}
 
-@media (min-width: 768px) {
-    :root {
-        --input-width: 23.813em;
-        --input-height: 3.5em;
+/* Comportamento dos campos de preenchimento e acesso */
+
+input {
+    width: 20.968em;
+    height: 2.053em;  
+    border-radius: 2.016em;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    
+    gap: 0.5em;
+}
+
+input::placeholder {
+    color: #757575;
+    text-align: left;
+}
+
+/* Nome de usuário, email e senha */
+
+#username, #email, #password, #cadastro_botao {
+    background-color: var(--cor-quartenaria);
+    padding: 0.5em 1em;
+    color: var(--cor-secundaria);
+}
+
+#password {
+    margin-bottom: 5%;
+}
+
+/* Personalização do botão de "Cadastrar" */
+
+#cadastro_botao {
+    text-align: center;
+    background-color: var(--cor-secundaria);
+    color: var(--cor-terciaria);
+
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#cadastro_botao:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+#cadastro_botao:active {
+  transform: scale(0.95);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Configurações do título "Cadastrar" */
+
+.cadastro, #cadastro_logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.833em;
+
+    gap: 0.2em;
+}
+
+/* Input com ícone */
+.input-icon {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+
+.input-icon input {
+    width: 100%;
+    padding-left: 2.5em;
+    box-sizing: border-box;
+}
+
+.input-icon .material-icons {
+    position: absolute;
+    left: 0.8em;
+    color: #757575;
+    font-size: 1.3em;
+    pointer-events: none;
+}
+
+/* Ajuste para inputs dentro do form */
+form.geometric {
+    width: 100%;
+    max-width: 21em;
+    align-items: center;
+}
+
+/* Opções abaixo dos inputs */
+/* O width dessa classe é improvisado para criar uma largura idêntica com os inputs acima, ou seja, uma gambiarra */
+.options {
+    width: 110%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+    font-size: 0.98em;
+    color: var(--cor-terciaria);
+}
+
+.options .remember {
+    display: flex;
+    align-items: center;
+    gap: 0.3em;
+    cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+    accent-color: var(--cor-secundaria);
+    width: 1em;
+    height: 1em;
+    margin-right: 0.2em;
+}
+
+.options .forgot {
+    color: var(--cor-terciaria);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.98em;
+}
+
+@media (max-width: 600px) {
+    .container {
+        gap: 1.5em;
     }
 
-    .geometric {
-        width: 25em;
-        height: 25em;
-        border-radius: 2.5em;
+    .geometric-box {
         padding: 2em;
+        border-radius: 1.5em;
+        max-width: 80vw;
+        gap: 0.5em;
     }
 
-    .container_options {
-        width: 27em;
-        font-size: 0.8em;
-        margin: 1.063em 0;
+    input {
+        width: 90vw;
+        max-width: 18em;
+        height: 1.5em;
+        font-size: 1em;
     }
 
-    h1{
-        
-        font-size: 3.125em;
+    .cadastro, #cadastro_logo {
+        font-size: 1.2em;
+        gap: 0.1em;
     }
 
-    a[name="cadastro"] {
-        font-size: 0.875em;
+    img {
+        width: 40%;
     }
 
-    input[type="submit"] {
-        font-weight: 800;
-        margin-bottom: 1.063em;
+    form.geometric {
+        max-width: 18em;
     }
-
-    /* Organização do ícone no título "Login" */
-
-    .login_icon {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    
-        color: var(--cor-primaria);
+    .input-icon input {
+        font-size: 1em;
     }
-    
-    span[id="login"] {
-        font-size: 3.125em;
+    .options {
+        font-size: 0.95em;
     }
-
-    main[class="forms"] {
-        display: flex;
-    }
-
-/*
-    p[id="Taskea"] {
-        font-size: 8em;
-        font-weight: 900;
-        letter-spacing: -8px;
-    }
-
-    span[id="check"] {
-        font-size: 1.875em;
-    }
-
-    img[id="background"] {
-        width: 91.102em;
-        height: 68.438em;
-    }
-
-    .container_background {
-        display: flex;
-    }
-        */
 }
