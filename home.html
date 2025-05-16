@@ -12,121 +12,6 @@
   <title>Home</title>
 </head>
 <body>
-  <style>
-    /* Estilos básicos omitidos para foco no novo recurso */
-    .conta {
-      display: inline-flex;
-      align-items: center;
-      position: relative;
-    }
-
-    #triangle {
-      font-size: 24px;
-      transition: transform 0.2s ease;
-    }
-
-    .dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      border-radius: 1.135em 0 1.135em 1.135em;
-      margin-top: 4px;
-      width: 200px;
-      display: none;
-      z-index: 1000;
-      padding: 1em;
-    }
-
-    #sair {
-      width: 3.111em;
-      height: 1.271em;
-      border-radius: 1.249em;
-      background-color: #c1121f;
-      text-align: center;
-      color: #ffffff;
-      font-weight: 600;
-    }
-
-    .dropdown.show {
-      display: block;
-    }
-
-    .dropdown-item:hover {
-      background-color: #e0c9c9;
-    }
-
-    .menu_options {
-      position: relative;
-      display: inline-block;
-    }
-
-    #menu {
-      cursor: pointer;
-    }
-
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: white;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      border-radius: 1.135em 0 1.135em 1.135em;
-      display: none;
-      padding: 1em;
-      width: 200px;
-      z-index: 1000;
-    }
-
-    .dropdown-menu:hover {
-        background-color: #e0c9c9;
-    }
-
-    .dropdown-menu.show {
-      display: block;
-    }
-
-    .task-card {
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 1em;
-      margin-bottom: 1em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1em;
-    }
-
-    .task-card input[type="checkbox"] {
-      transform: scale(1.2);
-    }
-
-    #acoes-excluir {
-      display: none;
-      margin: 1em 0;
-    }
-
-    #excluir-selecionadas {
-      background-color: #c1121f;
-      color: white;
-      border: none;
-      padding: 0.5em 1em;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      font: inherit;
-    }
-
-    #mensagem-vazia {
-      display: none;
-      color: gray;
-      text-align: center;
-      margin: 2em;
-      font-style: italic;
-    }
-  </style>
-
   <div class="container_header">
     <div class="header">
       <div class="nova_tarefa">
@@ -140,9 +25,7 @@
         <span id="account" class="material-symbols-outlined">account_circle</span>
         <div class="dropdown" id="dropdown">
           <div id="username">Olá, <strong>nome do usuário</strong>.</div>
-          <a href="/login.html">
-            <div class="dropdown-item" id="sair">Sair</div>
-          </a>
+          <a href="/login.html" class="dropdown-item" id="sair">Sair</a>
         </div>
       </div>
     </div>
@@ -150,7 +33,7 @@
 
   <div class="container_options_tasks">
     <div class="options">
-      <span id="filter" class="material-symbols-outlined">check_box</span>
+      <span id="check_box" class="material-symbols-outlined">check_box</span>
       <h1 id="Suas_tarefas">Suas tarefas</h1>
       <div class="menu_options">
         <span id="menu" class="material-symbols-outlined">menu</span>
@@ -158,20 +41,20 @@
           <div id="excluir" class="dropdown-item">Excluir</div>
         </div>
       </div>
-      <!-- Botão "Excluir selecionadas" -->
-        <div id="acoes-excluir">
-            <button id="excluir-selecionadas">Excluir selecionadas</button>
-            <button id="cancelar-exclusao" style="background-color: #ccc;
-            color: white;
-            border: none;
-            padding: 0.5em 1em;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            font: inherit;">Cancelar</button>
-        </div>
     </div>
-
+    
+    <!-- Botão "Excluir selecionadas" -->
+      <div id="acoes-excluir">
+          <button id="excluir-selecionadas">Excluir selecionadas</button>
+          <button id="cancelar-exclusao" style="background-color: #ccc;
+          color: white;
+          border: none;
+          padding: 0.5em 1em;
+          border-radius: 20px;
+          cursor: pointer;
+          font-weight: 600;
+          font: inherit;">Cancelar</button>
+      </div>
     <!-- Mensagem se estiver vazio -->
     <p id="mensagem-vazia">Não há tarefas no momento</p>
 
@@ -187,12 +70,14 @@
     conta.addEventListener("click", () => {
       dropdown.classList.toggle("show");
       conta.classList.toggle("open");
+      triangle.classList.toggle("rotate"); // Adiciona/Remove a classe rotate
     });
 
     document.addEventListener("click", (e) => {
       if (!conta.contains(e.target)) {
         dropdown.classList.remove("show");
         conta.classList.remove("open");
+        triangle.classList.remove("rotate"); // Remove a classe rotate ao fechar
       }
     });
 
@@ -223,9 +108,14 @@
     function renderizarTarefas() {
       container.innerHTML = "";
 
+      // Remove acoes-excluir se existir
+      const acoesExcluirExistente = document.getElementById("acoes-excluir");
+      if (acoesExcluirExistente) {
+        acoesExcluirExistente.remove();
+      }
+
       if (tarefas.length === 0) {
         mensagemVazia.style.display = "block";
-        acoesExcluir.style.display = "none";
         return;
       }
 
@@ -233,7 +123,20 @@
 
       tarefas.forEach((tarefa, index) => {
         const card = document.createElement("div");
-        card.classList.add("task-card");
+        card.classList.add("task-card", "animar-entrada");
+
+        const cardContent = document.createElement("div");
+        cardContent.style.display = "flex";
+        cardContent.style.alignItems = "center";
+        cardContent.style.gap = "1em";
+
+        if (modoExclusao) {
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.classList.add("checkbox-excluir");
+          checkbox.dataset.index = index;
+          cardContent.appendChild(checkbox);
+        }
 
         const info = document.createElement("div");
         const titulo = document.createElement("h3");
@@ -243,21 +146,70 @@
         info.appendChild(titulo);
         info.appendChild(descricao);
 
-        card.appendChild(info);
-
-        if (modoExclusao) {
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkbox.classList.add("checkbox-excluir");
-          checkbox.dataset.index = index;
-          card.appendChild(checkbox);
-        }
+        cardContent.appendChild(info);
+        card.appendChild(cardContent);
 
         container.appendChild(card);
+
+        // Força o reflow e remove a classe para animar a entrada
+        setTimeout(() => {
+          card.classList.remove("animar-entrada");
+        }, 10);
       });
+
+      // Adiciona acoes-excluir apenas se modoExclusao estiver ativo
+      if (modoExclusao) {
+        const acoesDiv = document.createElement("div");
+        acoesDiv.id = "acoes-excluir";
+
+        const btnExcluirSelecionadas = document.createElement("button");
+        btnExcluirSelecionadas.id = "excluir-selecionadas";
+        btnExcluirSelecionadas.textContent = "Excluir selecionadas";
+
+        const btnCancelar = document.createElement("button");
+        btnCancelar.id = "cancelar-exclusao";
+        btnCancelar.textContent = "Cancelar";
+        btnCancelar.style.backgroundColor = "#ccc";
+        btnCancelar.style.color = "white";
+        btnCancelar.style.border = "none";
+        btnCancelar.style.padding = "0.5em 1em";
+        btnCancelar.style.borderRadius = "20px";
+        btnCancelar.style.cursor = "pointer";
+        btnCancelar.style.fontWeight = "600";
+        btnCancelar.style.font = "inherit";
+
+        acoesDiv.appendChild(btnExcluirSelecionadas);
+        acoesDiv.appendChild(btnCancelar);
+
+        // Adiciona antes da lista de tarefas
+        container.parentNode.insertBefore(acoesDiv, container);
+
+        // Eventos dos botões
+        btnExcluirSelecionadas.addEventListener("click", () => {
+          const checkboxes = document.querySelectorAll(".checkbox-excluir:checked");
+          const indicesParaRemover = Array.from(checkboxes).map(cb => parseInt(cb.dataset.index));
+          tarefas = tarefas.filter((_, index) => !indicesParaRemover.includes(index));
+          localStorage.setItem("tarefas", JSON.stringify(tarefas));
+          if (tarefas.length === 0) {
+            modoExclusao = false;
+            mensagemVazia.style.display = "block";
+          }
+          renderizarTarefas();
+        });
+
+        btnCancelar.addEventListener("click", () => {
+          modoExclusao = false;
+          renderizarTarefas();
+        });
+      }
     }
 
     btnExcluir.addEventListener("click", () => {
+      menuDropdown.classList.remove("show");
+      // Se quiser ativar o modo exclusão, pode adicionar:
+      // modoExclusao = true;
+      // renderizarTarefas();
+
       if (tarefas.length === 0) {
         mensagemVazia.style.display = "block";
         acoesExcluir.style.display = "none";
@@ -282,15 +234,23 @@
         mensagemVazia.style.display = "block";
       }
 
+      checkboxes.forEach(checkbox => {
+        const card = checkbox.closest(".task-card");
+        card.classList.add('animar-saida');
+        card.addEventListener('transitionend', () => {
+          card.remove();
+        });
+      });
+
       renderizarTarefas();
     });
 
     // Cancelar exclusão
     const btnCancelar = document.getElementById("cancelar-exclusao");
     btnCancelar.addEventListener("click", () => {
-    modoExclusao = false;
-    acoesExcluir.style.display = "none";
-    renderizarTarefas();
+      modoExclusao = false;
+      acoesExcluir.style.display = "none";
+      renderizarTarefas();
     });
 
     // Inicializa tarefas na tela
